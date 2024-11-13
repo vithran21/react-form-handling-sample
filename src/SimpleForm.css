@@ -1,52 +1,83 @@
-/* Center the form and give it a nice look */
 .form-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f4f4f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    font-family: Arial, sans-serif;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  .form-group input:focus {
-    border-color: #6200ea;
-    outline: none;
-    box-shadow: 0 0 5px rgba(98, 0, 234, 0.3);
-  }
-  
-  .submit-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #6200ea;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-button:hover {
-    background-color: #3700b3;
-  }
-  
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  border-color: #6200ea;
+  outline: none;
+  box-shadow: 0 0 5px rgba(98, 0, 234, 0.3);
+}
+
+/* Radio group layout for gender */
+.radio-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.radio-group label {
+  font-weight: normal;
+  color: #333;
+}
+
+/* Checkbox group layout for skills */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  color: #333;
+}
+
+.checkbox-label input {
+  margin-right: 5px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #6200ea;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #3700b3;
+}

@@ -1,21 +1,37 @@
-import React, { useState } from 'react';
-import './SimpleForm.css';
+import React, { useState } from "react";
+import "./SimpleForm.css";
 
 function SimpleForm() {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
+    username: "",
+    email: "",
+    password: "",
+    gender: "",
+    skills: [],
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, type, checked } = e.target;
+
+    if (type === "checkbox") {
+      setFormData((prevData) => {
+        return {
+          ...prevData,
+          skills: checked
+            ? [...prevData.skills, value]
+            : prevData.skills.filter((skill) => skill !== value),
+        };
+      });
+    } else if (type === "radio") {
+      setFormData({ ...formData, [name]: value });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    console.log('Form Data:', formData);
+    e.preventDefault();
+    console.log("Form Data:", formData);
   };
 
   return (
@@ -47,7 +63,64 @@ function SimpleForm() {
           onChange={handleChange}
         />
       </div>
-      <button type="submit" className="submit-button">Submit</button>
+      <div className="form-group">
+        <label>Gender:</label>
+        <div className="radio-group">
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              checked={formData.gender === "male"}
+              onChange={handleChange}
+            />
+            Male
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              checked={formData.gender === "female"}
+              onChange={handleChange}
+            />
+            Female
+          </label>
+        </div>
+      </div>
+      <div className="form-group">
+        <label>Skills:</label>
+        <div className="checkbox-group">
+          {[
+            "Java",
+            "SQL",
+            "HTML",
+            "CSS",
+            "JS",
+            "JDBC",
+            "Hibernate",
+            "Spring",
+            "React",
+            "Docker",
+            "Kubernetes",
+            "AWS",
+          ].map((skill) => (
+            <label key={skill} className="checkbox-label">
+              <input
+                type="checkbox"
+                name="skills"
+                value={skill}
+                checked={formData.skills.includes(skill)}
+                onChange={handleChange}
+              />
+              {skill}
+            </label>
+          ))}
+        </div>
+      </div>
+      <button type="submit" className="submit-button">
+        Submit
+      </button>
     </form>
   );
 }
